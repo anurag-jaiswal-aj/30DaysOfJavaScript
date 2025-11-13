@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Days of JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="main-title">30 Days of JavaScript</h1>
+                <p class="subtitle">A collection of 30 JavaScript projects</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search projects by name or day..." autocomplete="off">
+            </div>
+            <div class="filter-info">
+                <span id="projectCount" class="project-count">Loading projects...</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <div id="projectsGrid" class="projects-grid">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading projects...</p>
+                </div>
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-content">
+                    <span class="no-results-icon">🔍</span>
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your search terms</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 | 30 Days of JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
