@@ -1,19 +1,18 @@
+const selectField = document.getElementById("selectField");
+const selectText = document.getElementById("selectText");
+const options = document.getElementsByClassName("options");
+const list = document.getElementById("list");
+const arrowIcon = document.getElementById("arrowIcon");
 
-var selectField = document.getElementById("selectField");
-var selectText = document.getElementById("selectText");
-var options = document.getElementsByClassName("options");
-var list = document.getElementById("list");
-var arrowIcon = document.getElementById("arrowIcon");
-
-selectField.onclick = function () {
+selectField.addEventListener("click", () => {
     list.classList.toggle("hide");
     arrowIcon.classList.toggle("rotate");
-}
+});
 
-for (option of options) {
-    option.onclick = function () {
+for (const option of options) {
+    option.addEventListener("click", function () {
         selectText.innerHTML = this.textContent;
         list.classList.toggle("hide");
         arrowIcon.classList.toggle("rotate");
-    }
+    });
 }
