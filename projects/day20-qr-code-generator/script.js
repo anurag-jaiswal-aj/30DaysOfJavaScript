@@ -25,8 +25,8 @@ function downloadQR() {
         fetch(qrImage.src)
             .then(response => response.blob())
             .then(blob => {
-                var blobUrl = URL.createObjectURL(blob);
-                var downloadLink = document.createElement('a');
+                const blobUrl = URL.createObjectURL(blob);
+                const downloadLink = document.createElement('a');
                 downloadLink.href = blobUrl;
                 downloadLink.download = 'qrcode.png';
                 document.body.appendChild(downloadLink);

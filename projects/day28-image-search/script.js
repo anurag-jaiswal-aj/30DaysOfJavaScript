@@ -1,5 +1,5 @@
 
-const accessKey = "ToClCfVmyjPNFa0fMkbYYciozLA2xdWxYu-rWvuQSEY";
+const accessKey = CONFIG.UNSPLASH_ACCESS_KEY;
 
 const searchForm = document.getElementById("search-form");
 const searchBox = document.getElementById("search-box");

@@ -1,27 +1,26 @@
+const lists = document.getElementsByClassName("list");
+const rightBox = document.getElementById("right");
+const leftBox = document.getElementById("left");
 
-let lists = document.getElementsByClassName("list");
-let rightBox = document.getElementById("right");
-let leftBox = document.getElementById("left");
+let selected = null;
 
-for(list of lists){
-    list.addEventListener("dragstart", function(e){
-        let selected = e.target;
-        rightBox.addEventListener("dragover", function(e){
-            e.preventDefault();
-        });
-
-        rightBox.addEventListener("drop", function(e){
-            rightBox.appendChild(selected);
-            selected = null;
-        })
-
-        leftBox.addEventListener("dragover", function(e){
-            e.preventDefault();
-        });
-
-        leftBox.addEventListener("drop", function(e){
-            leftBox.appendChild(selected);
-            selected = null;
-        })
-    })
+// Register dragstart on each list item once
+for (const list of lists) {
+    list.addEventListener("dragstart", (e) => {
+        selected = e.target;
+    });
 }
+
+// Register drop zones once — no stacking listeners
+[rightBox, leftBox].forEach(box => {
+    box.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+
+    box.addEventListener("drop", () => {
+        if (selected) {
+            box.appendChild(selected);
+            selected = null;
+        }
+    });
+});

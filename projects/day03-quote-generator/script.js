@@ -1,16 +1,32 @@
 const quote = document.getElementById("quote");
 const author = document.getElementById("author");
-const api_url = "https://api.quotable.io/random";
 
+// quotable.io is shut down — using dummyjson quotes API instead (free, no key needed)
+const api_url = "https://dummyjson.com/quotes/random";
 
-async function getquote(url){
-    const response = await fetch(url);
-    var data = await response.json();
-    quote.innerHTML = data.content;
-    author.innerHTML = data.author;
+async function getquote() {
+    try {
+        quote.innerHTML = "Loading...";
+        author.innerHTML = "";
+        const response = await fetch(api_url);
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const data = await response.json();
+        quote.innerHTML = data.quote;
+        author.innerHTML = "— " + data.author;
+    } catch (error) {
+        console.error("Failed to fetch quote:", error);
+        quote.innerHTML = "Could not load quote. Please try again.";
+        author.innerHTML = "";
+    }
 }
-getquote(api_url);
 
-function tweet(){
-    window.open("https://twitter.com/intent/tweet?text=" + quote.innerHTML + " ---- by " + author.innerHTML,"Tweet Window", "width=600", "height=300");
+function tweet() {
+    window.open(
+        "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(quote.innerHTML + " — " + author.innerHTML),
+        "Tweet Window",
+        "width=600,height=300"
+    );
 }
+
+getquote();
