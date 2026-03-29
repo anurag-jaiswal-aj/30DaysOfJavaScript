@@ -13,43 +13,41 @@
 
     <div class="container">
         <div class="calculator">
-            <form action="">
-                <div class="display">
-                    <input type="text" name="display">
-                </div>
-                <div>
-                    <input type="button" value="AC" onclick="display.value = ' ' " class="allClear">
-                    <input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1)"
-                        class="delete">
-                    <input type="button" value="." onclick="display.value += '.' ">
-                    <input type="button" value="/" onclick="display.value += '/' ">
-                </div>
-                <div>
-                    <input type="button" value="7" onclick="display.value += '7' ">
-                    <input type="button" value="8" onclick="display.value += '8' ">
-                    <input type="button" value="9" onclick="display.value += '9' ">
-                    <input type="button" value="*" onclick="display.value += '*' ">
-                </div>
-                <div>
-                    <input type="button" value="4" onclick="display.value += '4' ">
-                    <input type="button" value="5" onclick="display.value += '5' ">
-                    <input type="button" value="6" onclick="display.value += '6' ">
-                    <input type="button" value="-" onclick="display.value += '-' ">
-                </div>
-                <div>
-                    <input type="button" value="1" onclick="display.value += '1' ">
-                    <input type="button" value="2" onclick="display.value += '2' ">
-                    <input type="button" value="3" onclick="display.value += '3' ">
-                    <input type="button" value="+" onclick="display.value += '+' ">
-                </div>
-                <div>
-                    <input type="button" value="00" onclick="display.value += '00' ">
-                    <input type="button" value="0" onclick="display.value += '0' ">
-                    <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal">
-                </div>
-            </form>
+            <div class="display">
+                <input type="text" id="display" readonly>
+            </div>
+            <div>
+                <button class="allClear" data-action="clear">AC</button>
+                <button class="delete" data-action="delete">DE</button>
+                <button data-value=".">.</button>
+                <button data-value="/">/</button>
+            </div>
+            <div>
+                <button data-value="7">7</button>
+                <button data-value="8">8</button>
+                <button data-value="9">9</button>
+                <button data-value="*">*</button>
+            </div>
+            <div>
+                <button data-value="4">4</button>
+                <button data-value="5">5</button>
+                <button data-value="6">6</button>
+                <button data-value="-">-</button>
+            </div>
+            <div>
+                <button data-value="1">1</button>
+                <button data-value="2">2</button>
+                <button data-value="3">3</button>
+                <button data-value="+">+</button>
+            </div>
+            <div>
+                <button data-value="00">00</button>
+                <button data-value="0">0</button>
+                <button class="equal" data-action="equals">=</button>
+            </div>
         </div>
     </div>
+    <script src="script.js"></script>
 
 
 </body>

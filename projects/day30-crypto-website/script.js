@@ -1,17 +1,25 @@
-var btc = document.getElementById("bitcoin");
-var eth = document.getElementById("ethereum");
-var doge = document.getElementById("dogecoin");
+const btc = document.getElementById("bitcoin");
+const eth = document.getElementById("ethereum");
+const doge = document.getElementById("dogecoin");
 
-var settings = {
-    "async": true,
-    "crossDomain":true,
-    "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cdogecoin&vs_currencies=usd",
-    "method":"GET",
-    "headers":{}
+async function fetchCryptoPrices() {
+    try {
+        const response = await fetch(
+            "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cdogecoin&vs_currencies=usd"
+        );
+
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        btc.textContent = data.bitcoin.usd.toLocaleString();
+        eth.textContent = data.ethereum.usd.toLocaleString();
+        doge.textContent = data.dogecoin.usd;
+    } catch (error) {
+        console.error("Failed to fetch crypto prices:", error);
+        [btc, eth, doge].forEach(el => { el.textContent = "N/A"; });
+    }
 }
 
-$.ajax(settings).done(function(response){
-    btc.innerHTML = response.bitcoin.usd;
-    eth.innerHTML = response.ethereum.usd;
-    doge.innerHTML = response.dogecoin.usd;
-})
+fetchCryptoPrices();
